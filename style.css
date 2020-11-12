@@ -37,10 +37,17 @@ main {
 .contacts, .messages {
     float: left;
     height: 100%;
-    width: 50%;
 }
 
-.status, .notification, .finder, .top, .center, .bottom {
+.contacts {
+    width: 35%;
+}
+
+.messages {
+    width: 65%;
+}
+
+.status, .notification, .finder, .top, .bottom {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -101,6 +108,7 @@ main {
     align-self: flex-start;
     font-size: 18px;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .notification h4 {
@@ -115,29 +123,31 @@ main {
 }
 
 .fa-bell-slash {
-    font-size: 34px;
+    font-size: 24px;
     line-height: 70px;
 }
 
 .finder {
     height: 60px;
     background-color: #f6f6f6;
-    padding: 5px 10px;
+    padding: 10px 10px;
 }
 
 .finder input {
-    width: 100px;
+    width: 100%;
     height: 100%;
     border-radius: 30px;
     border: 1px solid lightgrey;
+    background-image: url('https://webstockreview.net/images/search-icon-png-4.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 5px 0;
+    font-size: 14px;
+    padding-left: 45px;
 }
 
 .finder input:focus {
     outline: none;
-}
-
-.finder input::placeholder {
-    padding-left: 10px;
 }
 
 .chat {
@@ -149,9 +159,76 @@ main {
     background-color: #eaeaea;
 }
 
+.center {
+    padding: 20px;
+}
+
+.center .user, .center .friend {
+    max-width: 40%;
+    padding: 10px;
+    border-radius: 8px;
+    clear: both;
+    position: relative;
+}
+
+.center .user {
+    background-color: #e1f7ca;
+    float: right;
+}
+
+.center .friend {
+    background-color: white;
+    float: left;
+}
+
+.user::before, .friend::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.user::before {
+    top: -10px;
+    right: -8px;
+    background: linear-gradient(45deg, rgba(225,247,202,1) 50%, rgba(69,10,245,0) 50%);
+    transform: rotate(-45deg);
+}
+
+.friend::before {
+    top: -10px;
+    left: -8px;
+    background: linear-gradient(45deg, rgba(255,255,255,1) 50%, rgba(69,10,245,0) 50%);
+    transform: rotate(-45deg);
+}
+
 .bottom {
     height: 80px;
-    background-color: lightgreen;
+    background-color: #eaeaea;
+    padding: 15px 25px;;
+}
+
+.bottom span {
+    color: #b2b2b2;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.bottom input {
+    width: 80%;
+    height: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 80px;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.bottom input:focus {
+    outline: none;
+}
+
+.bottom input::placeholder {
 }
 
 .center {
