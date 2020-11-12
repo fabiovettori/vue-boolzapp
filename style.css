@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    background-color: #d2d4c9;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-top {
+    height: 15%;
+    width: 100%;
+    background-color: #358675;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.foreground {
+    width: 77%;
+    height: 95%;
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+.contacts, .messages {
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+
+.status, .notification, .finder, .chat, .top, .center. .bottom {
+    float: left;
+    width: 100%;
+}
+
+.status {
+    height: 80px;
+    background-color: red;
+}
+
+.notification {
+    height: 90px;
+    background-color: yellow;
+}
+
+.finder {
+    height: 60px;
+    background-color: blue;
+}
+
+.chat {
+    height: calc(100% - 230px);
+    background-color: grey;
+}
+
+.top {
+    height: 80px;
+    background-color: pink;
+}
+
+.bottom {
+    height: 80px;
+    background-color: lightgreen;
+}
+
+.center {
+    height: calc(100% - 160px);
+    background-color: cyan;
+}
