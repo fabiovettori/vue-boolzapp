@@ -4,12 +4,18 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Segoe', sans-serif;
+    src: url('fonts/Segoe UI.woff');
+}
+
 main {
     background-color: #d2d4c9;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Segoe;
 }
 
 .background-top {
@@ -34,34 +40,113 @@ main {
     width: 50%;
 }
 
-.status, .notification, .finder, .chat, .top, .center. .bottom {
-    float: left;
+.status, .notification, .finder, .top, .center, .bottom {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat {
+    overflow-y:scroll;
 }
 
 .status {
     height: 80px;
-    background-color: red;
+    background-color: #eaeaea;
+    border-right: 1px solid grey;
+    padding: 0 10px;
+}
+
+.nav span {
+    font-size: 18px;
+    color: #b2b2b2;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    width: 100%;
+}
+
+.chat .section:not(:last-child) {
+    border-bottom: 1px solid lightgrey;
+}
+
+.buble-container {
+    display: flex;
+    align-items: center;
+}
+
+.buble {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: lightgrey;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .notification {
     height: 90px;
-    background-color: yellow;
+}
+
+.notification .fa-times {
+    align-self: flex-start;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.notification h4 {
+    font-weight: bold;
+    color: #1b1b1b;
+}
+
+.notification h5 {
+    color: #b2b2b2;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.fa-bell-slash {
+    font-size: 34px;
+    line-height: 70px;
 }
 
 .finder {
     height: 60px;
-    background-color: blue;
+    background-color: #f6f6f6;
+    padding: 5px 10px;
+}
+
+.finder input {
+    width: 100px;
+    height: 100%;
+    border-radius: 30px;
+    border: 1px solid lightgrey;
+}
+
+.finder input:focus {
+    outline: none;
+}
+
+.finder input::placeholder {
+    padding-left: 10px;
 }
 
 .chat {
     height: calc(100% - 230px);
-    background-color: grey;
 }
 
 .top {
     height: 80px;
-    background-color: pink;
+    background-color: #eaeaea;
 }
 
 .bottom {
@@ -71,5 +156,6 @@ main {
 
 .center {
     height: calc(100% - 160px);
-    background-color: cyan;
+    background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+    background-size: contain;
 }
