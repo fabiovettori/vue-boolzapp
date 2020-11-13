@@ -285,6 +285,7 @@ input:focus::placeholder {
 .center .user {
     background-color: #e1f7ca;
     float: right;
+    margin-bottom: 10px;
 }
 
 .center .friend {

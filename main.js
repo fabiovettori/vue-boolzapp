@@ -197,26 +197,58 @@ var app = new Vue({
                         time: '10.19 pm',
                         date: '13/11/2020',
                         status: 'received'
+                    },
+                    {
+                        message:'Impossibile',
+                        time: '10.22 pm',
+                        date: '13/11/2020',
+                        status: 'sent'
                     }
                 ]
             }
         ],
-        friendMessagesIndex: 0,
+        lastMessageIndex: 0,
         indexConv: 0,
+        userNewMessage: '',
     },
     methods: {
         lastMessage: function(i){
-            for (var j = 0; j < this.contacts[i].messages.length; j++) {
-
-                if (this.contacts[i].messages[j].status == 'received') {
-
-                    this.friendMessagesIndex = j;
-                }
-            }
+             this.lastMessageIndex = this.contacts[i].messages.length - 1;
+             console.log(this.lastMessageIndex);
         },
         conversation: function (i){
             // la funzione deve andare a leggere l'indice del contatto selezionato
             this.indexConv = i;
+        },
+        userNewConv: function(indexConv){
+
+            let userMes = {
+                message: this.userNewMessage,
+                time: '14.00 pm',
+                date: '14/11/2020',
+                status: 'sent'
+            };
+            this.contacts[this.indexConv].messages.push(userMes);
+
+            this.userNewMessage = '';
+
+            let answare = setTimeout(() => {
+                let userMes = {
+                    message: 'OK',
+                    time: '14.00 pm',
+                    date: '14/11/2020',
+                    status: 'received'
+                };
+                // console.log(userMess);
+                // console.log(this.indexConv);
+            this.contacts[this.indexConv].messages.push(userMes);
+            },1000);
+
+            answare();
+        },
+        dinamicSwitch: function(){
+            let imput = document.querySelector('#test');
+            // console.log(input);
         }
     }
 });
