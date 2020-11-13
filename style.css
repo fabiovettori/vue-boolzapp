@@ -290,6 +290,7 @@ input:focus::placeholder {
 .center .friend {
     background-color: white;
     float: left;
+    margin-bottom: 10px;
 }
 
 .user::before, .friend::before {

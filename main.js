@@ -186,28 +186,63 @@ var app = new Vue({
                         date: '13/11/2020',
                         status: 'sent'
                     },
+                    {
+                        message:'white of course!!',
+                        time: '10.19 pm',
+                        date: '13/11/2020',
+                        status: 'received'
+                    },
+                    {
+                        message:'Do not forget the icecream please ;)',
+                        time: '10.19 pm',
+                        date: '13/11/2020',
+                        status: 'received'
+                    }
                 ]
             }
-        ]
+        ],
+        friendMessagesIndex: 0,
+        indexConv: 0,
     },
-    friendLastMessage: '',
-    friendTimeLastMessage: '',
-    indeCont: 0,
     methods: {
         lastMessage: function(i){
             for (var j = 0; j < this.contacts[i].messages.length; j++) {
 
                 if (this.contacts[i].messages[j].status == 'received') {
 
-                    this.friendLastMessage = this.contacts[i].messages[j].message;
-
-                    this.friendTimeLastMessage = this.contacts[i].messages[j].time;
+                    this.friendMessagesIndex = j;
                 }
             }
         },
         conversation: function (i){
             // la funzione deve andare a leggere l'indice del contatto selezionato
-            this.indeCont = i;
+            this.indexConv = i;
         }
     }
 });
+
+//
+
+// let test = [
+//     {
+//         name: 'ab',
+//         message: 'no'
+//     },
+//     {
+//         name: 'received',
+//         message: 'no'
+//     },
+//     {
+//         name: 'received',
+//         message: 'no'
+//     },
+// ];
+//
+// let array = [];
+// for (var i = 0; i < test.length; i++) {
+//     if (test[i].name.includes('received')) {
+//         array.push(i);
+//     }
+// }
+//
+// console.log(array.slice(-1).join());

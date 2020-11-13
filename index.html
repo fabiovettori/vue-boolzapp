@@ -52,11 +52,11 @@
                             <div class="buble-container">
                                 <div class="buble" :style="{ 'background-image': 'url(' + contacts[i].avatar  + ')' }"></div>
                                 <div>
-                                    <h4>{{ contacts[i].name }}</h4>
-                                    <h5 :class="lastMessage(i)">{{ friendLastMessage }}</h5>
+                                    <h4>{{ contact.name }}</h4>
+                                    <h5 :class="lastMessage(i)">{{ contact.messages[friendMessagesIndex].message }}</h5>
                                 </div>
                             </div>
-                            <span :class="lastMessage(i)">{{ friendTimeLastMessage }}</span>
+                            <span>{{ contact.messages[friendMessagesIndex].time }}</span>
                         </div>
 
                     </div>
@@ -65,7 +65,7 @@
                 <div class="messages">
                     <div class="top">
                         <div class="status">
-                            <div class="buble"></div>
+                            <div class="buble" :style="{ 'background-image': 'url(' + contacts[indexConv].avatar  + ')' }"></div>
                             <div class="nav">
                                 <span class="fas fa-search"></span>
                                 <span class="fas fa-ellipsis-v"></span>
@@ -75,15 +75,10 @@
 
                     <div class="center">
 
-                        <div class="conv-container" v-for="(message, i) in contacts[9].messages">
-                            <div class="user" v-if="contacts[i].messages[i].status == 'sent'">
-                                <p>{{ contacts[9].messages[i].message }}</p>
-                                <span>{{ contacts[9].messages[i].time }}</span>
-                            </div>
-
-                            <div class="friend" v-if="contacts[0].messages[i].status == 'received'">
-                                <p>{{ contacts[9].messages[i].message }}</p>
-                                <span>{{ contacts[9].messages[i].time }}</span>
+                        <div class="conv-container" v-for="conv in contacts[indexConv].messages">
+                            <div :class="conv.status == 'sent' ? 'user' : 'friend'">
+                                <p>{{ conv.message }}</p>
+                                <span>{{ conv.time }}</span>
                             </div>
                         </div>
 
