@@ -2,7 +2,9 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>BoolZap</title>
+        <title>Whats App</title>
+        <link rel="icon" href="favicon/favicon-16x16.png" type="image/png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="style.css">
 
@@ -18,7 +20,7 @@
 
                 <div class="contacts">
                     <div class="status">
-                        <div class="buble"></div>
+                        <div class="buble" :style="{ 'background-image': 'url(' + user[0].avatar  + ')' }"></div>
                         <div class="nav">
                             <span class="fas fa-circle-notch"></span>
                             <span class="fas fa-comment-alt"></span>
@@ -33,127 +35,28 @@
                                     <span class="fas fa-bell-slash"></span>
                                 </div>
                                 <div>
-                                    <h4>Ricevi notifich di nuovi messaggi</h4>
-                                    <h5>Attiva notifiche Desktop</h5>
+                                    <h4>Receive new message notifications</h4>
+                                    <h5>Active Desktop notification<span class="fas fa-angle-right"></span></h5>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="finder">
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" placeholder="Find or start a new chat..">
                         <span class="fas fa-arrow-left"></span>
                     </div>
                     <div class="chat">
 
-                        <div class="section">
+                        <div v-for="(contact, i) in contacts" class="section" @click="conversation(i)">
                             <div class="buble-container">
-                                <div class="buble"></div>
+                                <div class="buble" :style="{ 'background-image': 'url(' + contacts[i].avatar  + ')' }"></div>
                                 <div>
-                                    <h4>Ricevi notifich di nuovi messaggi</h4>
-                                    <h5>Attiva notifiche Desktop</h5>
+                                    <h4>{{ contacts[i].name }}</h4>
+                                    <h5 :class="lastMessage(i)">{{ friendLastMessage }}</h5>
                                 </div>
                             </div>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="section">
-                            <div class="buble-container">
-                                <div class="buble"></div>
-                                <div>
-                                    <h4>Ricevi notifich di nuovi messaggi</h4>
-                                    <h5>Attiva notifiche Desktop</h5>
-                                </div>
-                            </div>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="section">
-                            <div class="buble-container">
-                                <div class="buble"></div>
-                                <div>
-                                    <h4>Ricevi notifich di nuovi messaggi</h4>
-                                    <h5>Attiva notifiche Desktop</h5>
-                                </div>
-                            </div>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="section">
-                            <div class="buble-container">
-                                <div class="buble"></div>
-                                <div>
-                                    <h4>Ricevi notifich di nuovi messaggi</h4>
-                                    <h5>Attiva notifiche Desktop</h5>
-                                </div>
-                            </div>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="section">
-                            <div class="buble-container">
-                                <div class="buble"></div>
-                                <div>
-                                    <h4>Ricevi notifich di nuovi messaggi</h4>
-                                    <h5>Attiva notifiche Desktop</h5>
-                                </div>
-                            </div>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="section">
-                            <div class="buble-container">
-                                <div class="buble"></div>
-                                <div>
-                                    <h4>Ricevi notifich di nuovi messaggi</h4>
-                                    <h5>Attiva notifiche Desktop</h5>
-                                </div>
-                            </div>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="section">
-                            <div class="buble-container">
-                                <div class="buble"></div>
-                                <div>
-                                    <h4>Ricevi notifich di nuovi messaggi</h4>
-                                    <h5>Attiva notifiche Desktop</h5>
-                                </div>
-                            </div>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="section">
-                            <div class="buble-container">
-                                <div class="buble"></div>
-                                <div>
-                                    <h4>Ricevi notifich di nuovi messaggi</h4>
-                                    <h5>Attiva notifiche Desktop</h5>
-                                </div>
-                            </div>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="section">
-                            <div class="buble-container">
-                                <div class="buble"></div>
-                                <div>
-                                    <h4>Ricevi notifich di nuovi messaggi</h4>
-                                    <h5>Attiva notifiche Desktop</h5>
-                                </div>
-                            </div>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="section">
-                            <div class="buble-container">
-                                <div class="buble"></div>
-                                <div>
-                                    <h4>Ricevi notifich di nuovi messaggi</h4>
-                                    <h5>Attiva notifiche Desktop</h5>
-                                </div>
-                            </div>
-                            <span>18.00</span>
+                            <span :class="lastMessage(i)">{{ friendTimeLastMessage }}</span>
                         </div>
 
                     </div>
@@ -171,44 +74,17 @@
                     </div>
 
                     <div class="center">
-                        <div class="user">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolores hic rerum animi. Ex ducimus maxime officiis officia numquam, aspernatur fugit quasi, debitis laboriosam aliquam consequuntur corporis architecto voluptatem maiores!</p>
-                            <span>18.00</span>
-                        </div>
 
-                        <div class="friend">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut vero accusamus deleniti expedita amet odio aliquam ipsa molestiae delectus. Veritatis doloremque hic esse tenetur laudantium minus, dolorem ipsa doloribus odio.</p>
-                            <span>18.00</span>
-                        </div>
+                        <div class="conv-container" v-for="(message, i) in contacts[9].messages">
+                            <div class="user" v-if="contacts[i].messages[i].status == 'sent'">
+                                <p>{{ contacts[9].messages[i].message }}</p>
+                                <span>{{ contacts[9].messages[i].time }}</span>
+                            </div>
 
-                        <div class="user">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolores hic rerum animi. Ex ducimus maxime officiis officia numquam, aspernatur fugit quasi, debitis laboriosam aliquam consequuntur corporis architecto voluptatem maiores!</p>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="friend">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut vero accusamus deleniti expedita amet odio aliquam ipsa molestiae delectus. Veritatis doloremque hic esse tenetur laudantium minus, dolorem ipsa doloribus odio.</p>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="user">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolores hic rerum animi. Ex ducimus maxime officiis officia numquam, aspernatur fugit quasi, debitis laboriosam aliquam consequuntur corporis architecto voluptatem maiores!</p>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="friend">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut vero accusamus deleniti expedita amet odio aliquam ipsa molestiae delectus. Veritatis doloremque hic esse tenetur laudantium minus, dolorem ipsa doloribus odio.</p>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="user">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolores hic rerum animi. Ex ducimus maxime officiis officia numquam, aspernatur fugit quasi, debitis laboriosam aliquam consequuntur corporis architecto voluptatem maiores!</p>
-                            <span>18.00</span>
-                        </div>
-
-                        <div class="friend">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut vero accusamus deleniti expedita amet odio aliquam ipsa molestiae delectus. Veritatis doloremque hic esse tenetur laudantium minus, dolorem ipsa doloribus odio.</p>
-                            <span>18.00</span>
+                            <div class="friend" v-if="contacts[0].messages[i].status == 'received'">
+                                <p>{{ contacts[9].messages[i].message }}</p>
+                                <span>{{ contacts[9].messages[i].time }}</span>
+                            </div>
                         </div>
 
                     </div>
@@ -216,7 +92,7 @@
                     <div class="bottom">
                         <span class="far fa-smile"></span>
                         <span class="fas fa-paperclip"></span>
-                        <input type="text" placeholder="Scrivi un messaggio">
+                        <input type="text" placeholder="Write a new message..">
                         <span class="fas fa-microphone"></span>
                     </div>
                 </div>
@@ -224,6 +100,6 @@
             </div>
         </main>
 
-        <link rel="stylesheet" href="main.js">
+        <script src="main.js" charset="utf-8"></script>
     </body>
 </html>

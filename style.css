@@ -27,7 +27,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  /* background: #555; */
 }
 
 main {
@@ -68,7 +68,6 @@ input:focus::placeholder {
     width: 77%;
     height: 95%;
     background-color: #ffffff;
-    z-index: 1;
 }
 
 .contacts, .messages {
@@ -79,6 +78,10 @@ input:focus::placeholder {
 .contacts {
     width: 30%;
     position: relative;
+}
+
+.messages {
+    width: 70%;
 }
 
 .fa-circle-notch {
@@ -96,10 +99,6 @@ input:focus::placeholder {
     top: 1px;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.messages {
-    width: 70%;
 }
 
 .status, .notifications, .finder, .top, .bottom {
@@ -121,6 +120,12 @@ input:focus::placeholder {
 
 .status:last-child {
     border-left: 1px solid #c8c8c8;
+}
+
+.status .buble, .chat .buble {
+    background-size: 50px auto;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .nav span {
@@ -145,6 +150,13 @@ input:focus::placeholder {
 
 .chat .section:not(:last-child) {
     border-bottom: 1px solid lightgrey;
+}
+
+.chat h5 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 200px;
 }
 
 .buble-container {
@@ -172,8 +184,15 @@ input:focus::placeholder {
     background-color: white;
 }
 
-.notificatios h5 {
+.notifications h5:hover {
     text-decoration: underline;
+    cursor: pointer;
+}
+
+.notifications .fa-angle-right {
+    vertical-align: bottom;
+    font-size: 16px;
+    margin-left: 3px;
 }
 
 .fa-bell-slash {
