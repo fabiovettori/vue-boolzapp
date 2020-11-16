@@ -18,9 +18,13 @@
 
             <div class="foreground">
 
+                <!-- left section -->
                 <div class="contacts">
                     <div class="status">
-                        <div class="buble" :style="{ 'background-image': 'url(' + user[0].avatar  + ')' }"></div>
+                        <div class="buble-container">
+                            <div class="buble" :style="{ 'background-image': 'url(' + user[0].avatar  + ')' }"></div>
+                            <h4 :class>{{ user[0].name}} </h4>
+                        </div>
                         <div class="nav">
                             <span class="fas fa-circle-notch"></span>
                             <span class="fas fa-comment-alt"></span>
@@ -43,29 +47,35 @@
                     </div>
 
                     <div class="finder">
-                        <input type="text" placeholder="Find or start a new chat..">
+                        <input type="text" placeholder="Find or start a new chat.." v-model="inputFilter" @keyup="newFilterContacts(), listGen()">
                         <span class="fas fa-arrow-left"></span>
                     </div>
-                    <div class="chat">
 
-                        <div v-for="(contact, i) in contacts" class="section" @click="conversation(i)">
+                    <div class="chat">
+                        <div v-for="(contact, i) in variableContainer" class="section" @click="conversation(i)">
                             <div class="buble-container">
-                                <div class="buble" :style="{ 'background-image': 'url(' + contacts[i].avatar  + ')' }"></div>
+                                <div class="buble" :style="{ 'background-image': 'url(' + contact.avatar  + ')' }"></div>
                                 <div>
                                     <h4>{{ contact.name }}</h4>
-                                    <h5 :class="lastMessage(i)">{{ contact.messages[lastMessageIndex].message }}</h5>
+                                    <h5 v-html="contact.messages[contact.messages.length - 1].message">{{ contact.messages[contact.messages.length - 1].message }}</h5>
                                 </div>
                             </div>
-                            <span>{{ contact.messages[lastMessageIndex].time }}</span>
+                            <span>{{ contact.messages[contact.messages.length - 1].time }}</span>
                         </div>
-
                     </div>
                 </div>
 
+                <!-- right section -->
                 <div class="messages">
                     <div class="top">
                         <div class="status">
-                            <div class="buble" :style="{ 'background-image': 'url(' + contacts[indexConv].avatar  + ')' }"></div>
+                            <div class="buble-container">
+                                <div class="buble" :style="{ 'background-image': 'url(' + contacts[indexConv].avatar  + ')' }"></div>
+                                <div>
+                                    <h4 :class>{{ contacts[indexConv].name }} </h4>
+                                    <span id="status">active now</span>
+                                </div>
+                            </div>
                             <div class="nav">
                                 <span class="fas fa-search"></span>
                                 <span class="fas fa-ellipsis-v"></span>
@@ -74,21 +84,44 @@
                     </div>
 
                     <div class="center">
-
-                        <div class="conv-container" v-for="conv in contacts[indexConv].messages">
+                        <div class="conv-container" v-for="(conv, i) in contacts[indexConv].messages">
                             <div :class="conv.status == 'sent' ? 'user' : 'friend'">
-                                <p>{{ conv.message }}</p>
-                                <span>{{ conv.time }}</span>
+                                <p v-html="conv.message">{{ conv.message }}</p>
+                                <div class="message-status">
+                                    <span>{{ conv.time }}</span>
+                                    <svg v-if="conv.status == 'sent'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="currentColor" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="dropdown" :class="check == i ? dropToggle : 'null'" @click="toggleDropMenu(i)">
+                                    <span class="fas fa-chevron-down"></span>
+
+                                    <ul class="dropdown-menu" :class="check == i ? dropToggle : 'null'">
+                                        <li>Reply</li>
+                                        <li>Forward message</li>
+                                        <li>Important message</li>
+                                        <li @click="deleteMessage(i)">Delete message</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="bottom">
                         <span class="far fa-smile"></span>
                         <span class="fas fa-paperclip"></span>
-                        <input type="text" placeholder="Write a new message.." v-model="userNewMessage" @focusin="dinamicSwitch" @keypress.enter="userNewConv(indexConv)" id="test">
-                        <span id="test"class="fas fa-microphone"></span>
+                        <input type="text" placeholder="Write a new message.." v-model="userNewMessage"  @keyup.enter="userNewConv(indexConv)" @focusin="dinamicSwitch()" @focusout="dinamicSwitch()">
+                        <span :class=" command " ref="email"></span>
+                    </div>
+                </div>
+
+                <div class="alert-container" :class="alertDelMessage == 'active' ? 'active' : 'null'">
+                    <div class="alert-message-delete">
+                        <p>Delete message?</p>
+                        <div class="buttons-container">
+                            <button @click="alertDelMessage = 'null'">Discard</button>
+                            <button @click="completeDeMess()">Delete</button>
+                        </div>
                     </div>
                 </div>
 
