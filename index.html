@@ -83,7 +83,7 @@
                         </div>
                     </div>
 
-                    <div class="center">
+                    <div id="chat-section" ref="chat-section" class="center" @scroll="scrollFunction()">
                         <div class="conv-container" v-for="(conv, i) in contacts[indexConv].messages">
                             <div :class="conv.status == 'sent' ? 'user' : 'friend'">
                                 <p v-html="conv.message">{{ conv.message }}</p>
@@ -104,6 +104,10 @@
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+
+                        <div @click="scrollTotoBottom()" id="scroll-button" ref="scroll-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 20" width="19" height="20"><path fill="currentColor" d="M3.8 6.7l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z"></path></svg>
                         </div>
                     </div>
 

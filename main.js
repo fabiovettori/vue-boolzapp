@@ -188,7 +188,7 @@ var app = new Vue({
                         status: 'received'
                     },
                     {
-                        message:'Why do not go to have a look in Gucci near jefferson bridge? I sow beatiful shirts last sunday &#128084&#128084&#128076',
+                        message:'Why do not go to have a look in Gucci near Jefferson bridge? I saw beautiful shirts last sunday &#128084&#128084&#128076',
                         time: '3.55 pm',
                         date: '13/11/2020',
                         status: 'sent'
@@ -498,7 +498,40 @@ var app = new Vue({
         this.listGen();
     },
 
+    mounted: function(){
+    },
+
     methods: {
+        // funzione che gestisce la visibilità dell'icona di scroll nelle chat
+        scrollFunction: function(){
+            // calcolo l'altezza dell'elmento (compreso della porzione scrollabile)
+            const elementFullHeigth = this.$refs['chat-section'].offsetHeight;
+
+            // sottraggo all'altezza totale (scrollabile) la porzione visibile
+            const elementScrollTotY  = this.$refs['chat-section'].scrollHeight - elementFullHeigth;
+
+            // calcolo i pixel scrollati in verticali dall'utente
+            let userScrollY = this.$refs['chat-section'].scrollTop;
+
+            // verifico la posizione attuale dello scroll, se si trova a piè contanitore l'icona svanisce altrimenti ricompare
+            if (userScrollY < elementScrollTotY ) {
+                this.$refs['scroll-button'].style.opacity = 1;
+            } else if (userScrollY == elementScrollTotY){
+                this.$refs['scroll-button'].style.opacity = 0;
+            };
+        },
+
+        // funazione che al click sull'icona di scroll delle chat riporta a piè della conversazione (consentendo così di visualizzare l'ultima)
+        scrollTotoBottom: function(){
+            // calcolo l'altezza dell'elmento (compreso della porzione scrollabile)
+            const elementFullHeigth = this.$refs['chat-section'].offsetHeight;
+
+            // sottraggo all'altezza totale (scrollabile) la porzione visibile
+            const elementScrollTotY  = this.$refs['chat-section'].scrollHeight - elementFullHeigth;
+
+            this.$refs['chat-section'].scrollTo(0, elementScrollTotY);
+            this.$refs['scroll-button'].style.opacity = 0;
+        },
         // quando vengono generate le chat ad ogni contatto è associato un indice (assegnato dal ciclo v-for), al click della preview della conversazione la funzione registra l'indice corrispondente e lo va a salvare nella variabile globale indexConv
         conversation: function (i){
             this.indexConv = i;
