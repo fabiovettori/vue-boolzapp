@@ -127,6 +127,7 @@ input:focus::placeholder {
     background-size: 50px auto;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
 }
 
 .nav span {
@@ -245,11 +246,25 @@ input:focus::placeholder {
     font-size: 14px;
     padding-left: 45px;
     transition: all .3s ease;
+    position: relative;
 }
 
 .finder input:focus {
     outline: none;
     background-image: none;
+}
+
+.finder.focus:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #15c39a;
+    top: 50%;
+    right: 20px;
+    transform: translate(-50%, -50%);
 }
 
 .fa-arrow-left {
@@ -441,6 +456,7 @@ input:focus::placeholder {
     height: 65px;
     background-color: #eaeaea;
     padding: 10px 25px;;
+    position: relative;
 }
 
 .bottom span {
@@ -460,6 +476,19 @@ input:focus::placeholder {
 
 .bottom input:focus {
     outline: none;
+}
+
+.bottom.focus:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #15c39a;
+    top: 50%;
+    right: 90px;
+    transform: translate(-50%, -50%);
 }
 
 .fa-play, .fa-microphone {
@@ -512,7 +541,7 @@ input:focus::placeholder {
     font-size: 14px;
     text-transform: uppercase;
     border: none;
-    background-color: #05cd51;
+    background-color: #15c39a;
     color: white;
     border-radius: 3px;
     transition: all .5s ease;
@@ -527,7 +556,7 @@ input:focus::placeholder {
 .alert-message-delete button:first-of-type {
     margin-right: 10px;
     background-color: white;
-    color: #05cd51;
+    color: #15c39a;
 }
 
 .alert-message-delete button:hover {

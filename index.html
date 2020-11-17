@@ -46,7 +46,7 @@
                         </div>
                     </div>
 
-                    <div class="finder" ref="finder-section" :class="checkInputFocus =='active' ? 'active' : 'null'">
+                    <div class="finder" :class="checkInputFocus =='active' ? 'active focus' : 'null'">
                         <input type="text" placeholder="Find or start a new chat.." v-model="inputFilter" @focusin="inputAnimation()" @focusout="inputAnimation()"  @keyup="newFilterContacts(), listGen()">
                         <span class="fas fa-arrow-left"></span>
                     </div>
@@ -111,7 +111,7 @@
                         </div>
                     </div>
 
-                    <div class="bottom">
+                    <div class="bottom" :class="checkNewMessageFocus =='focus' ? 'focus' : 'null'">
                         <span class="far fa-smile"></span>
                         <span class="fas fa-paperclip"></span>
                         <input type="text" placeholder="Write a new message.." v-model="userNewMessage"  @keyup.enter="userNewConv(indexConv)" @focusin="dinamicSwitch()" @focusout="dinamicSwitch()">

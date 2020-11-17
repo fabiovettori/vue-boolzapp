@@ -492,7 +492,8 @@ var app = new Vue({
         checkDelBtn: false,
         index: 0,
         // variabile che regola il cambio di background dell'input di ricerca messaggi al focus dell'input
-        checkInputFocus: ''
+        checkInputFocus: '',
+        checkNewMessageFocus: '',
     },
 
     created: function(){
@@ -580,8 +581,10 @@ var app = new Vue({
 
             if (this.command == 'fas fa-microphone') {
                 this.command = 'fas fa-play'
+                this.checkNewMessageFocus = 'focus';
             } else {
                 this.command = 'fas fa-microphone';
+                this.checkNewMessageFocus = '';
             };
         },
 
@@ -638,7 +641,7 @@ var app = new Vue({
         },
 
         inputAnimation: function(){
-        
+
             if (this.checkInputFocus == '') {
                 this.checkInputFocus = 'active';
             } else {
