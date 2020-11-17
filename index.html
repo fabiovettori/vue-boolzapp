@@ -46,8 +46,8 @@
                         </div>
                     </div>
 
-                    <div class="finder">
-                        <input type="text" placeholder="Find or start a new chat.." v-model="inputFilter" @keyup="newFilterContacts(), listGen()">
+                    <div class="finder" ref="finder-section" :class="checkInputFocus =='active' ? 'active' : 'null'">
+                        <input type="text" placeholder="Find or start a new chat.." v-model="inputFilter" @focusin="inputAnimation()" @focusout="inputAnimation()"  @keyup="newFilterContacts(), listGen()">
                         <span class="fas fa-arrow-left"></span>
                     </div>
 

@@ -490,7 +490,9 @@ var app = new Vue({
         alertDelMessage: '',
         deleteMessCheck: false,
         checkDelBtn: false,
-        index: 0
+        index: 0,
+        // variabile che regola il cambio di background dell'input di ricerca messaggi al focus dell'input
+        checkInputFocus: ''
     },
 
     created: function(){
@@ -550,6 +552,7 @@ var app = new Vue({
                 status: 'sent'
             };
             this.contacts[this.indexConv].messages.push(userMes);
+            this.scrollTotoBottom();
 
             // per il reset dell'input
             this.userNewMessage = '';
@@ -568,6 +571,7 @@ var app = new Vue({
                     status: 'received'
                 };
             this.contacts[this.indexConv].messages.push(userMes);
+            this.scrollTotoBottom();
             },1000);
         },
 
@@ -619,15 +623,27 @@ var app = new Vue({
 
         // funzione che elimina il messaggio selezionato dall'utente
         deleteMessage: function(i) {
+
             this.alertDelMessage = 'active';
 
             this.index = i;
         },
+
+        // funzione che regola la definitiva eliminazione del messaggio una volta premuto il pulsante delete del popup
         completeDeMess: function(){
 
             this.contacts[this.indexConv].messages.splice(this.index,1);
             this.alertDelMessage = '';
             this.checkDelBtn = false;
-        }
+        },
+
+        inputAnimation: function(){
+        
+            if (this.checkInputFocus == '') {
+                this.checkInputFocus = 'active';
+            } else {
+                this.checkInputFocus = '';
+            }
+        },
     }
 });

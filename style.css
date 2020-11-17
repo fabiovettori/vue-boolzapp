@@ -226,6 +226,11 @@ input:focus::placeholder {
     background-color: #f6f6f6;
     padding: 10px 10px;
     position: relative;
+    transition: all .5s ease;
+}
+
+.finder.active {
+    background-color: white;
 }
 
 .finder input {
@@ -254,12 +259,13 @@ input:focus::placeholder {
     opacity: 0;
     font-size: 20px;
     color: #9de1fe;
-    transform: translate(-50%, -50%);
-    transition: opacity .3s ease;
+    transform: translate(-50%, -50%) rotateZ(-90deg);
+    transition: all .3s ease;
     cursor: pointer;
 }
 
 .finder input:focus ~ .fa-arrow-left {
+    transform: translate(-50%, -50%) rotateZ(0deg);
     opacity: 1;
 }
 
