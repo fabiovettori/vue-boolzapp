@@ -70,9 +70,9 @@
                     <div class="top">
                         <div class="status">
                             <div class="buble-container">
-                                <div class="buble" :style="{ 'background-image': 'url(' + contacts[indexConv].avatar  + ')' }"></div>
+                                <div class="buble" :style="{ 'background-image': 'url(' + variableContainer[indexConv].avatar  + ')' }"></div>
                                 <div>
-                                    <h4 :class>{{ contacts[indexConv].name }} </h4>
+                                    <h4 :class>{{ variableContainer[indexConv].name }} </h4>
                                     <span id="status">active now</span>
                                 </div>
                             </div>
@@ -83,8 +83,8 @@
                         </div>
                     </div>
 
-                    <div id="chat-section" ref="chat-section" class="center" @scroll="scrollFunction()">
-                        <div class="conv-container" v-for="(conv, i) in contacts[indexConv].messages">
+                    <div id="chat-section" ref="chat-section" @click="getMousePosY" class="center" @scroll="scrollFunction()">
+                        <div class="conv-container" v-for="(conv, i) in variableContainer[indexConv].messages">
                             <div :class="conv.status == 'sent' ? 'user' : 'friend'">
                                 <p v-html="conv.message">{{ conv.message }}</p>
                                 <div class="message-status">
@@ -96,7 +96,7 @@
                                 <div class="dropdown" :class="check == i ? dropToggle : 'null'" @click="toggleDropMenu(i)">
                                     <span class="fas fa-chevron-down"></span>
 
-                                    <ul class="dropdown-menu" :class="check == i ? dropToggle : 'null'">
+                                    <ul class="dropdown-menu" :class="check == i ? dropToggle + ' ' + dropDownPosition : 'null'">
                                         <li>Reply</li>
                                         <li>Forward message</li>
                                         <li>Important message</li>

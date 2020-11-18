@@ -494,6 +494,9 @@ var app = new Vue({
         // variabile che regola il cambio di background dell'input di ricerca messaggi al focus dell'input
         checkInputFocus: '',
         checkNewMessageFocus: '',
+        // controlli della posizione del dropdown dei messaggi (se la l'utlimo messaggio è troppo in basso il dropdown di apre verso l'alto)
+        mousePosY: 0,
+        dropDownPosition: 'null'
     },
 
     created: function(){
@@ -502,6 +505,7 @@ var app = new Vue({
     },
 
     mounted: function(){
+        this.listGen();
     },
 
     methods: {
@@ -537,7 +541,7 @@ var app = new Vue({
         },
         // quando vengono generate le chat ad ogni contatto è associato un indice (assegnato dal ciclo v-for), al click della preview della conversazione la funzione registra l'indice corrispondente e lo va a salvare nella variabile globale indexConv
         conversation: function (i){
-            this.indexConv = i;
+                this.indexConv = i;
         },
 
         // funzione che va a leggere il testo inserito dall'utente nell'input nuovo messaggio e lo va ad inserire tra le conversazioni del contatto con cui l'utente sta messaggiando
@@ -617,11 +621,23 @@ var app = new Vue({
             this.check = i;
 
             if (this.dropToggle == '') {
+
+                // se l'utente si trova al di sotto del 70% dello schermo il menu si apre verso l'alto altrimenti verso il basso
+                const changeSidePoint = window.innerHeight * 0.7;
+                console.log(changeSidePoint + ' ' + '70%');
+
+                if (this.mousePosY > changeSidePoint) {
+                    this.dropDownPosition = 'above';
+
+                } else {
+                    this.dropDownPosition = 'null';
+                }
+
                 this.dropToggle = 'active';
 
             } else if (this.dropToggle == 'active'){
                 this.dropToggle = '';
-            }
+            };
         },
 
         // funzione che elimina il messaggio selezionato dall'utente
@@ -648,5 +664,11 @@ var app = new Vue({
                 this.checkInputFocus = '';
             }
         },
+
+        // funzione che determina la posizione del click (in verticale) all'interno dello spazio della chat (serve a capire sel il dropdown si deve aprire sopra o sotto il trigger) - lavora insieme alla funzione toggleDropMenu()
+        getMousePosY: function (event) {
+                this.mousePosY = event.screenY;
+                console.log(this.mousePosY + ' ' + 'posizione cursore');
+        }
     }
 });

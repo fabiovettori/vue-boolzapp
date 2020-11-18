@@ -406,8 +406,17 @@ input:focus::placeholder {
     padding: 10px 0;
     border-radius: 3px;
     box-shadow: 6px 6px 17px -5px rgba(0,0,0,0.2);
-    visibility: hidden;
+    display: none;
     z-index: 1;
+}
+
+.dropdown-menu.active {
+    display: block;
+}
+
+.dropdown-menu.above {
+    top: -180px;
+    left: 0;
 }
 
 .user .dropdown-menu {
@@ -424,10 +433,6 @@ input:focus::placeholder {
 
 .dropdown-menu li:hover {
     background-color: #f4f4f4;
-}
-
-.dropdown-menu.active {
-    visibility: visible;
 }
 
 .user::before, .friend::before {
