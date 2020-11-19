@@ -47,12 +47,13 @@
                     </div>
 
                     <div class="finder" :class="checkInputFocus =='active' ? 'active focus' : 'null'">
-                        <input type="text" placeholder="Find or start a new chat.." v-model="inputFilter" @focusin="inputAnimation()" @focusout="inputAnimation()"  @keyup="newFilterContacts(), listGen()">
+                        <input type="text" placeholder="Find or start a new chat.." v-model="inputFilter" @focusin="inputAnimation()" @focusout="inputAnimation()"  @keyup="newFilterContacts()">
                         <span class="fas fa-arrow-left"></span>
                     </div>
 
                     <div class="chat">
-                        <div v-for="(contact, i) in variableContainer" class="section" @click="conversation(i)">
+                        <div v-for="(contact, i) in contacts"
+                        v-if="contact.visible" class="section" @click="conversation(i)" :class="indexConv == i ? 'active' : 'null' ">
                             <div class="buble-container">
                                 <div class="buble" :style="{ 'background-image': 'url(' + contact.avatar  + ')' }"></div>
                                 <div>
@@ -70,9 +71,9 @@
                     <div class="top">
                         <div class="status">
                             <div class="buble-container">
-                                <div class="buble" :style="{ 'background-image': 'url(' + variableContainer[indexConv].avatar  + ')' }"></div>
+                                <div class="buble" :style="{ 'background-image': 'url(' + contacts[indexConv].avatar  + ')' }"></div>
                                 <div>
-                                    <h4 :class>{{ variableContainer[indexConv].name }} </h4>
+                                    <h4 :class>{{ contacts[indexConv].name }} </h4>
                                     <span id="status">active now</span>
                                 </div>
                             </div>
@@ -83,8 +84,8 @@
                         </div>
                     </div>
 
-                    <div id="chat-section" ref="chat-section" @click="getMousePosY" class="center" @scroll="scrollFunction()">
-                        <div class="conv-container" v-for="(conv, i) in variableContainer[indexConv].messages">
+                    <div id="chat-section" ref="chat-section" class="center" @scroll="scrollFunction()">
+                        <div class="conv-container" v-for="(conv, i) in contacts[indexConv].messages">
                             <div :class="conv.status == 'sent' ? 'user' : 'friend'">
                                 <p v-html="conv.message">{{ conv.message }}</p>
                                 <div class="message-status">

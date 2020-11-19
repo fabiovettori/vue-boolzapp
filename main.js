@@ -4,13 +4,15 @@ var app = new Vue({
         user: [
             {
                 name: 'Chris Valentine',
-                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRxsrRegxrV0qTWtfuHMYu9bG4q6FnvU9KdZw&usqp=CAU'
+                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRxsrRegxrV0qTWtfuHMYu9bG4q6FnvU9KdZw&usqp=CAU',
+                visible: true,
             }
         ],
         contacts: [
             {
                 name: 'Sherin Clark',
                 avatar: 'https://i.pinimg.com/originals/67/2d/83/672d83879a7e2da4e886c72db668c7ab.jpg',
+                visible: true,
                 messages: [
                     {
                         message:'Hey Chris, how are you? Are you free tomorrow evening? I am gonna go to the Crazy Monkey for a drink, do you fancy to join with me and my friends. Ah! There will be Julie as well ;) &#129409',
@@ -59,6 +61,7 @@ var app = new Vue({
             {
                 name: 'Simone Libert',
                 avatar: 'https://images.squarespace-cdn.com/content/v1/5a402fd22aeba58d4a35a916/1579896591078-75WHVDVCE7XDKKABZCPH/ke17ZwdGBToddI8pDm48kNu93_l1Rc0JoXikXAEKHf17gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmDJyaVitQ06bkWUY0OMxkmN-bdz7wg8la12Me-ub45vBE5029s6uMXtkNCzVgxK8m/Model-test-shoot-streetstyle-Paris-Fashion-Week-Haute-Couture-Fall-Winter-2019-2020-Alexis-Breugelmans-012.jpg?format=2500w',
+                visible: true,
                 messages: [
                     {
                         message:'Hi Simone, how has it been going the the new diet plan &#129369 &#129382 &#129373?  are you been counting macros?',
@@ -101,6 +104,7 @@ var app = new Vue({
             {
                 name: 'James Lagard',
                 avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTsm7DTzpt7tKPCW8WlmuhmSQUpaP-2UpXyXQ&usqp=CAU',
+                visible: true,
                 messages: [
                     {
                         message:'Hey bro, are you ok? where did you go yesterday at the end? Rodd and me were looking for you at the garden but we did not see you!',
@@ -150,6 +154,7 @@ var app = new Vue({
             {
                 name: 'Rodd Sheffard',
                 avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTvAHuE6WKrX7Z66UoSpeKuwZ6qWvpfWrXj_A&usqp=CAU',
+                visible: true,
                 messages: [
                     {
                         message:'Chris Could you borrow me the red shirt for tonight? the loundry has not finished yet so I do not have any to dress for tonight &#128548&#128548&#128548',
@@ -198,6 +203,7 @@ var app = new Vue({
             {
                 name: 'Sheron Trussard',
                 avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS721FIFQwL4eII-Ja0iJ4sPkNV9G529M6XUA&usqp=CAU',
+                visible: true,
                 messages: [
                     {
                         message:'Hi Chris I have good news, a friend of mine has been selling french dog puppies and I immidiately think of you!',
@@ -258,6 +264,7 @@ var app = new Vue({
             {
                 name: 'Pet Shen',
                 avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTkPLvy24m6nxMQ5ldInNAku4M01oBqGI67-w&usqp=CAU',
+                visible: true,
                 messages: [
                     {
                         message:'Hey genius, you forgot your bag at gym, I left it at the reception desk &#128517&#128517',
@@ -294,6 +301,7 @@ var app = new Vue({
             {
                 name: 'Luiss Bernard',
                 avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4T9LiA06jWem8b19Jx6p5JMgad8uJ7UmKzw&usqp=CAU',
+                visible: true,
                 messages: [
                     {
                         message: 'Lu have you thought about my proposal? it will be amazing to go together &#128507&#127796&#128018&#127865',
@@ -348,6 +356,7 @@ var app = new Vue({
             {
                 name: 'Giulet Samoe',
                 avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR97U3VjDItAjlz7qYDmBuqk4kGY_dFcPRU7g&usqp=CAU',
+                visible: true,
                 messages: [
                     {
                         message:'<img src="https://media3.giphy.com/media/26ybw55yGZPJVcrjG/200w.webp?cid=ecf05e47ddd5ca49869b2938a3719e933ed822075cfdc7b7&rid=200w.webp">Hey you!..',
@@ -396,6 +405,7 @@ var app = new Vue({
             {
                 name: 'Amore Vitton',
                 avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTuq60dv6-MObJsQQoxiJPIF0N2yMtwvyMq5w&usqp=CAU',
+                visible: true,
                 messages: [
                     {
                         message:'I am waiting an answer Chris, I am sik and tired to wait you!',
@@ -420,6 +430,7 @@ var app = new Vue({
             {
                 name: 'Juan Backer',
                 avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTtNpB4AyF_v57IyaOyjY1OSqjC8fYwZUYI2g&usqp=CAU',
+                visible: true,
                 messages: [
                     {
                         message:'Can you bring wine?',
@@ -473,8 +484,6 @@ var app = new Vue({
         ],
         // array contenitore dei contatti filtrati dall'input di ricerca
         finder: [],
-        // array contenitore dei contatti (può essere uguale a quello originale dei contatti oppure agli elementi trovati dal finder)
-        variableContainer: [],
         // variabile globale che si aggiorna ogni qual volta viene cliccato su una preview (l'indice è generato dal ciclo v-for della chat), indica l'indice della conversazione cliccata tra le preview della chat
         indexConv: 0,
         // serve a leggere/resettare l'input dei messaggi da inviare in chat
@@ -497,15 +506,6 @@ var app = new Vue({
         // controlli della posizione del dropdown dei messaggi (se la l'utlimo messaggio è troppo in basso il dropdown di apre verso l'alto)
         mousePosY: 0,
         dropDownPosition: 'null'
-    },
-
-    created: function(){
-        // funzione che eseguo lo switch tra il contanitore dei contatti originale e quello filtrato rappresentato dall'array finder (funzione che deve caricare immediatamente)
-        this.listGen();
-    },
-
-    mounted: function(){
-        this.listGen();
     },
 
     methods: {
@@ -542,6 +542,7 @@ var app = new Vue({
         // quando vengono generate le chat ad ogni contatto è associato un indice (assegnato dal ciclo v-for), al click della preview della conversazione la funzione registra l'indice corrispondente e lo va a salvare nella variabile globale indexConv
         conversation: function (i){
                 this.indexConv = i;
+                this.check = -1;
         },
 
         // funzione che va a leggere il testo inserito dall'utente nell'input nuovo messaggio e lo va ad inserire tra le conversazioni del contatto con cui l'utente sta messaggiando
@@ -556,8 +557,14 @@ var app = new Vue({
                 date,
                 status: 'sent'
             };
+
+            // aggiorna model, scatter iin u nmomento x del futuro i lrefresh del dom
             this.contacts[this.indexConv].messages.push(userMes);
-            this.scrollTotoBottom();
+
+            this.$nextTick(() => {
+
+                this.scrollTotoBottom();
+            });
 
             // per il reset dell'input
             this.userNewMessage = '';
@@ -576,7 +583,12 @@ var app = new Vue({
                     status: 'received'
                 };
             this.contacts[this.indexConv].messages.push(userMes);
-            this.scrollTotoBottom();
+
+            this.$nextTick(() => {
+
+                this.scrollTotoBottom();
+            });
+
             },1000);
         },
 
@@ -594,37 +606,23 @@ var app = new Vue({
 
         // funzione che va a filtrare la lista contatti confrontando l'input inserito dall'utente con le prime n lettere del contatto (dove n è la lunghezza della stringa inserita nell'input di ricerca)
         newFilterContacts: function(){
-            this.finder = this.contacts.filter((contact) => {
 
-                if (this.inputFilter.toLowerCase().slice(0,this.inputFilter.length) == contact.name.toLowerCase().slice(0,this.inputFilter.length)){
-                    return true
+            this.contacts.forEach((contact, index) => {
 
-                } else {
-                    return false
-                }
-            }
-        )},
-
-        // funzione che eseguo lo switch tra il contanitore dei contatti originale e quello filtrato rappresentato dall'array finder (funzione che deve caricare immediatamente)
-        listGen: function(){
-            if (this.inputFilter.length > 0) {
-                this.variableContainer = this.finder;
-
-            } else {
-                this.variableContainer = this.contacts;
-            }
+                contact.visible = (this.inputFilter.toLowerCase().slice(0,this.inputFilter.length) == contact.name.toLowerCase().slice(0,this.inputFilter.length));
+            });
         },
 
         // funzione che regola la visibilità del dropdown menu dei messaggi
         toggleDropMenu: function(i){
 
+            this.mousePosY = event.screenY;
+
             this.check = i;
 
             if (this.dropToggle == '') {
-
                 // se l'utente si trova al di sotto del 70% dello schermo il menu si apre verso l'alto altrimenti verso il basso
                 const changeSidePoint = window.innerHeight * 0.7;
-                console.log(changeSidePoint + ' ' + '70%');
 
                 if (this.mousePosY > changeSidePoint) {
                     this.dropDownPosition = 'above';
@@ -664,11 +662,5 @@ var app = new Vue({
                 this.checkInputFocus = '';
             }
         },
-
-        // funzione che determina la posizione del click (in verticale) all'interno dello spazio della chat (serve a capire sel il dropdown si deve aprire sopra o sotto il trigger) - lavora insieme alla funzione toggleDropMenu()
-        getMousePosY: function (event) {
-                this.mousePosY = event.screenY;
-                console.log(this.mousePosY + ' ' + 'posizione cursore');
-        }
     }
 });
